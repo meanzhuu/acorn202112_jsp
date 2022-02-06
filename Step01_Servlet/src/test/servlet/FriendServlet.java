@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,17 +11,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/fortune")
-public class FortuneServlet extends HttpServlet{
+@WebServlet("/friend/list")
+public class FriendServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//오늘의 운세 목록
-		List<String> list=new ArrayList<>();
-		list.add("동쪽으로 가면 귀인을 만나요");
-		list.add("로또를 사면 3등에 당첨 될거에요");
-		list.add("이상형을 만나게 될거에요");
-		list.add("뜻밖의 횡제를 합니다");
-		list.add("물건을 읽어 버려요 조심하세요");
+		//출력할 친구 이름 목록
+		List<String> list=new ArrayList<String>();
+		list.add("김구라");
+		list.add("해골");
+		list.add("원숭이");
+		list.add("주뎅이");
+		list.add("덩어리");
 		
 		//응답 인코딩 설정
 		resp.setCharacterEncoding("utf-8");
@@ -33,18 +32,42 @@ public class FortuneServlet extends HttpServlet{
 		pw.println("<!doctype html>");
 		pw.println("<html>");
 		pw.println("<head>");
-		pw.println("<meta charset='utf-8'>");
-		pw.println("<title>오늘의 운세 페이지</title>");
+		pw.println("<meta =charset='utf-8'>");
+		pw.println("<title>친구 이름 목록 페이지</title>");
 		pw.println("</head>");
 		pw.println("<body>");
-		//0~4 사이의 랜덤한 정수 얻어내기 
-		Random ran=new Random();
-		int ranNum=ran.nextInt(5);
+		//친구 이름 목록을 for 문을 활용해서 클라이언트 웹브라우저에 출력해 보세요.
+		pw.println("<h1>친구 이름 목록 입니다</h1>");
+		pw.println("<ul>");
+		for(int i=0; i<list.size(); i++) {
+			pw.println("<li>"+list.get(i)+"</li>");
+		}
+		pw.println("</ul>");
 		
-		pw.println("<p>오늘의 운세:"+list.get(ranNum)+"</p>");
+		//확장 for 문을 활용하면
+		pw.println("<h1>친구 이름 목록 입니다</h1>");
+		pw.println("<ul>");
+		for(String tmp:list) {
+			pw.println("<li>"+tmp+"</li>");
+		}
+		pw.println("</ul>");
+		
 		pw.println("</body>");
 		pw.println("</html>");
 		pw.close();
 		
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
