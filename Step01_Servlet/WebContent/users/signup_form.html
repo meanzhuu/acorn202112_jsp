@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>/users/signup_form.html</title>
+</head>
+<body>
+	<div class="container">
+		<h1>Sign-up Form</h1>
+		<form action="signup">
+			<label for="email">email</label> <input type="text" id="email"
+				name="email"> <br>
+			<fieldset>
+				<legend>Gender</legend>
+				<label><input type="radio" name="gender" value="man">male
+				</label> <label><input type="radio" name="gender" value="woman">female </label>
+			</fieldset>
+			<fieldset>
+				<legend>Hobby</legend>
+				<label><input type="checkbox" name="hobby" value="soccer" />soccer</label>
+				<label><input type="checkbox" name="hobby" value="reading" />reading</label>
+				<label><input type="checkbox" name="hobby" value="movies" />movies</label>
+				<label><input type="checkbox" name="hobby" value="etc" />etc</label>
+			</fieldset>
+			<label for="job">Job</label> 
+			<select name="job" id="job">
+				<option value="">select</option>
+				<option value="programmer">programmer</option>
+				<option value="doctor">doctor</option>
+			</select> 
+			<br> 
+			<label for="lunch">select lunch</label> 
+			<select name="lunch" id="lunch">
+				<optgroup label="snack food">
+					<!-- unlike options above, 
+		options below do not state value that inner text become values automatically -->
+					<option>ramen</option>
+					<option>gimbap</option>
+				</optgroup>
+				<optgroup label="chinese">
+					<option>black bean noodles</option>
+					<option>fried dumplings</option>
+				</optgroup>
+			</select> <br> <label for="comment">Any comments</label> <br>
+			<textarea name="comment" id="comment"></textarea>
+			<br>
+			<button type="submit">submit</button>
+		</form>
+		<!-- 1.create SignupServlet for requests upon signup botton
+	2. print all submitted contents(requested parameters) to console
+	3. show message "your account has been created" to client web browser
+	 -->
+	</div>
+</body>
+</html>

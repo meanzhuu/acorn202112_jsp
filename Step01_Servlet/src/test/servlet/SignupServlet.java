@@ -9,14 +9,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/users/login")
-public class LoginServlet extends HttpServlet {
-	@Override
+@WebServlet("/users/signup")
+public class SignupServlet extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("utf-8");
-		System.out.println("ID: "+req.getParameter("id"));
-		System.out.println("PASSWORD: "+req.getParameter("pw"));
+		String[] hobby=req.getParameterValues("hobby");
+		String email=req.getParameter("email");
+		String gender=req.getParameter("gender");
+		String job=req.getParameter("job");
+		String lunch=req.getParameter("lunch");
+		String comment=req.getParameter("comment");
 		
+		System.out.println(email);
+		System.out.println(gender);
+		
+		if(hobby!=null) {
+			for(String tmp:hobby) {
+				System.out.println(tmp);
+			}
+		}
+		
+		System.out.println(job);
+		System.out.println(lunch);
+		System.out.println(comment);
+		
+		resp.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=utf-8");
+
 		PrintWriter pw = resp.getWriter();
 		pw.println("<!doctype html>");
 		pw.println("<html>");
@@ -25,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 		pw.println("<title> page</title>");
 		pw.println("</head>");
 		pw.println("<body>");
-		pw.println("<p>logged in</p>");
+		pw.println("<p>Your account has been created </p>");
 		pw.println("</body>");
 		pw.println("</html>");
 		pw.close();
