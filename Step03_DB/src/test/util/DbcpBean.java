@@ -6,7 +6,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 /*
  *   [ Data Base Connection Pool Bean ]
- *   
+ *   x
  *   - Bean 은 java 객체를 지칭하는 단어 이기도 하다 
  *   - Connection 객체를 관리하는 Pool 의 개념을 만들어 놓고 Connection 을 관리한다.
  *   - Connection 객체가 필요할때 new DbcpBean().getConn() 해서 Connection 객체를 얻어와서
