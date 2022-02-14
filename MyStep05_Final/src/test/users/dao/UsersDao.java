@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import test.users.dto.UsersDto;
+import test.util.DbcpBean;
 
 public class UsersDao {
 	private static UsersDao dao;
@@ -28,7 +29,7 @@ public class UsersDao {
 	      PreparedStatement pstmt = null;
 	      ResultSet rs = null;
 	      try {
-	         conn = new DbcpBean().getConn();
+	    	  conn = new DbcpBean().getConn();
 	         //select 문 작성
 	         String sql = "SELECT pwd,email,profile,regdate"
 	               + " FROM users"
@@ -42,7 +43,7 @@ public class UsersDao {
 	         if (rs.next()) {
 	            dto=new UsersDto();
 	            dto.setId(id);
-	            dto.setPwd(rs.getString("pwd"));
+	            dto.setPw(rs.getString("pwd"));
 	            dto.setEmail(rs.getString("email"));
 	            dto.setProfile(rs.getString("profile"));
 	            dto.setRegdate(rs.getString("regdate"));
