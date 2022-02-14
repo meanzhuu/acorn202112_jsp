@@ -18,6 +18,6 @@ session.setMaxInactiveInterval(60);
 	<p><strong><%=nick %></strong></p>
 	<p>It will be automatically deleted
 	 when there is no request for 60 secs or the web browser is closed</p> 
-	 
+	<a href="../index.jsp">direct to index page</a>
 </body>
 </html>

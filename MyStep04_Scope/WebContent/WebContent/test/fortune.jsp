@@ -11,5 +11,6 @@
 		String fortuneToday= (String)request.getAttribute("fortuneToday");
 	%>
 	<p>Daily horoscope: <strong><%=fortuneToday %></strong> </p>
+	<a href="/test/fortune.jsp">Is request content gone?</a>
 </body>
 </html>
