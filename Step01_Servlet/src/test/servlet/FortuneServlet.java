@@ -48,16 +48,3 @@ public class FortuneServlet extends HttpServlet{
 		
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
