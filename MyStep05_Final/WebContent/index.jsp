@@ -25,6 +25,7 @@
 		<li><a href="users/signup_form.jsp">Sign up</a>
 		<li><a href="private/study.jsp">Exclusive Page for Study</a>
 		<li><a href="private/study.jsp">Exclusive Page for Games</a>
+		<li><a href="test/upload_form.jsp">File Upload Test</a></li>
 		</ul>
 	</div>
 </body>

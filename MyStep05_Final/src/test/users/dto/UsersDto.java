@@ -2,24 +2,22 @@ package test.users.dto;
 
 public class UsersDto {
 	private String id;
-	private String pw;
+	private String pwd;
 	private String email;
 	private String profile;
 	private String regdate;
-	private String newPw;
+	private String newPwd;
 	
-	public UsersDto() {
-		
-	}
+	public UsersDto() {}
 
-	public UsersDto(String id, String pw, String email, String profile, String regdate) {
+	public UsersDto(String id, String pwd, String email, String profile, String regdate, String newPwd) {
 		super();
 		this.id = id;
-		this.pw = pw;
+		this.pwd = pwd;
 		this.email = email;
 		this.profile = profile;
 		this.regdate = regdate;
-		this.newPw = newPw;
+		this.newPwd = newPwd;
 	}
 
 	public String getId() {
@@ -30,12 +28,12 @@ public class UsersDto {
 		this.id = id;
 	}
 
-	public String getPw() {
-		return pw;
+	public String getPwd() {
+		return pwd;
 	}
 
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 
 	public String getEmail() {
@@ -62,13 +60,12 @@ public class UsersDto {
 		this.regdate = regdate;
 	}
 
-	public String getNewPw() {
-		return newPw;
+	public String getNewPwd() {
+		return newPwd;
 	}
 
-	public void setNewPw(String newPw) {
-		this.newPw = newPw;
+	public void setNewPwd(String newPwd) {
+		this.newPwd = newPwd;
 	}
+
 }
-
-	

@@ -14,21 +14,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/*
- *  요청을 가로채서 중간에 원하는 작업을 할 수 있는 필터 만들기
- * 
- * 1. javax.servlet.Filter interface
- * 2. 
- */
-@WebFilter({"/private/*", "/users/private/*", "/cafe/private/*"})
+/*  [ 요청을 가로체서 중간에 원하는 작업을 할수 있는 필터 만들기 ]
+ *  
+ *  1. javax.servlet.Filter 인터페이스를 구현한다.
+ *  2. 어떤 요청에 대해 필터링을 할것인지 맵핑한다. */
+
+@WebFilter({"/private/*","/users/private/*","/cafe/private/*"})
 public class LoginFilter implements Filter{
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
 		
 	}
-
+	//필터가 동작할때 자동으로 호출되는 메소드 
+	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		//1. 로그인된 클라이언트인지 확인한다.
@@ -74,7 +73,5 @@ public class LoginFilter implements Filter{
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 	
-	}
-
-	
+	}	
 }

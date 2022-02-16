@@ -1,11 +1,14 @@
-<%@page import="test.users.dao.UsersDao"%>
 <%@page import="test.users.dto.UsersDto"%>
+<%@page import="test.users.dao.UsersDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%
-	String id = (String) session.getAttribute("id");
-UsersDto dto = UsersDao.getInstance().getData(id);
-%>
+	//1. session scope 에서 로그인된 아이디 불러오기
+	String id=(String)session.getAttribute("id");
+	//2. DB 에서 가입 정보를 불러온다.
+	UsersDto dto=UsersDao.getInstance().getData(id);
+	//3. 응답한다.
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,29 +16,29 @@ UsersDto dto = UsersDao.getInstance().getData(id);
 <title>/users/private/info.jsp</title>
 </head>
 <body>
-	<div class="container">
-		<h1>Member Information</h1>
-		<table>
-			<tr>
-				<th>ID</th>
-				<td><%=dto.getId()%></td>
-			</tr>
-			<tr>
-				<th>Password</th>
-				<td><a href="pw_updateform.jsp">수정하기</a></td>
-			</tr>
-			<tr>
-				<th>이메일</th>
-				<td><%=dto.getEmail()%></td>
-			</tr>
-			<tr>
-				<th>가입일</th>
-				<td><%=dto.getRegdate()%></td>
-			</tr>
-
-		</table>
-		<a href="updateform.jsp">개인정보 수정</a> <a href="delete.jsp">탈퇴</a>
-	</div>
+<div class="container">
+	<h1>Member Information</h1>
+	<table>
+		<tr>
+			<th>ID</th>
+			<td><%=dto.getId() %></td>
+		</tr>
+		<tr>
+			<th>Password</th>
+			<td><a href="pwd_updateform.jsp">Change</a></td>
+		</tr>
+		<tr>
+			<th>이메일</th>
+			<td><%=dto.getEmail() %></td>
+		</tr>
+		<tr>
+			<th>가입일</th>
+			<td><%=dto.getRegdate() %></td>
+		</tr>
+	</table>
+	<a href="updateform.jsp">Update personal information</a>
+	<a href="javascript:deleteConfirm()">Delete my account</a>
+</div>
 <script>
 	function deleteConfirm(){
 		let isDelete=confirm("Do you want to delete your account?");
@@ -46,3 +49,23 @@ UsersDto dto = UsersDao.getInstance().getData(id);
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> refs/heads/master
