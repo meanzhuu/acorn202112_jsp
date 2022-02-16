@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  * 1. javax.servlet.Filter interface
  * 2. 
  */
-
+@WebFilter({"/private/*", "/users/private/*", "/cafe/private/*"})
 public class LoginFilter implements Filter{
 
 	@Override

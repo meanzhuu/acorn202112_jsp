@@ -36,5 +36,13 @@ UsersDto dto = UsersDao.getInstance().getData(id);
 		</table>
 		<a href="updateform.jsp">개인정보 수정</a> <a href="delete.jsp">탈퇴</a>
 	</div>
+<script>
+	function deleteConfirm(){
+		let isDelete=confirm("Do you want to delete your account?");
+		if(isDelete){
+			location.href="delete.jsp";
+		}
+	}
+</script>
 </body>
 </html>
