@@ -14,6 +14,15 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/private/info.jsp</title>
+<style>
+   /* 프로필 이미지를 작은 원형으로 만든다 */
+   #profileImage{
+      width: 50px;
+      height: 50px;
+      border: 1px solid #cecece;
+      border-radius: 50%;
+   }
+</style>
 </head>
 <body>
 <div class="container">
@@ -24,6 +33,8 @@
 			<td><%=dto.getId() %></td>
 		</tr>
 		<tr>
+			<th>Profile</th>
+			
 			<th>Password</th>
 			<td><a href="pwd_updateform.jsp">Change</a></td>
 		</tr>
