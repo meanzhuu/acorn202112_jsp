@@ -10,7 +10,7 @@
 <body>
 <div class="container">
 	<h1>회원가입 폼 입니다.</h1>
-	<form action="signup.jsp" method="post">
+	<form action="signup.jsp" method="post" id="signupForm">
 		<div class="mb-3">
 			<label class="control-label" for="id">아이디</label>
 			<input class="form-control" type="text" name="id" id="id"/>
@@ -32,20 +32,23 @@
 			<input class="form-control" type="text" name="email" id="email"/>
 			<div class="invalid-feedback">Email only</div>
 		</div>
-		<button class="btn btn-outline-primary" type="submit">가입</button>
+		<button class="btn btn-outline-primary" type="submit" id="btn">가입</button>
+
 	</form>
 </div>
 <script src="${pageContext.request.contextPath }/js/gura_util.js"></script>
 <script>
-
-
+	let isIdValid=false;
+	let isPwdValid=false;
+	let isEmailValid=false;
+	
 	document.querySelector("#id").addEventListener("input", function(){
 		//input 요소의 참조값을 self 에 미리 담아 놓기 
 		const self=this;
 		//입력한 문자열
 		let inputId=self.value;
 		let reg=/^[a-z].{4,9}$/; 
-		let result=reg.test(inputId);
+		isIdValid=reg.test(inputId);
 		//gura_util.js 에 있는 함수를 이용해서 입력한 아이디를 보내서 해당 아이디가 이미 존재하는지 여부를 응답받기 
 		ajaxPromise("checkid.jsp", "get", "inputId="+inputId)
 		.then(function(response){
@@ -56,7 +59,7 @@
 			self.classList.remove("is-valid");
 			self.classList.remove("is-invalid");
 			//data 는 {isExist:true} or {isExist:false} 형식의 object 이다. 
-			if(data.isExist || !result){//이미 존재하면 사용할수 없는 아이디  true, false
+			if(data.isExist || !isIdValid){//이미 존재하면 사용할수 없는 아이디  true, false
 				self.classList.add("is-invalid");
 			}else{
 				self.classList.add("is-valid");
@@ -75,15 +78,15 @@
 		document.querySelector("#pwd2").classList.remove("is-invalid");
 		
 		const pwd=document.querySelector("#pwd").value;
+		const pwd2=document.querySelector("#pwd2").value;
+		
 		let reg=/[\W]/; 
-		let result=reg.test(pwd);
-		if(!result){//만일 비밀번호 입력란과 확인란이 다르다면
+		isPwdValid=reg.test(pwd);
+		if(!isPwdValid){
 			document.querySelector("#pwd").classList.add("is-invalid");
 		}else{
 			document.querySelector("#pwd").classList.add("is-valid");
 		}
-		
-		const pwd2=document.querySelector("#pwd2").value;
 		
 		if(pwd != pwd2){//만일 비밀번호 입력란과 확인란이 다르다면
 			document.querySelector("#pwd2").classList.add("is-invalid");
@@ -95,6 +98,31 @@
 	//비밀번호 입력란에 input 이벤트가 일어 났을때 실행할 함수 등록
 	document.querySelector("#pwd").addEventListener("input", checkPwd);
 	document.querySelector("#pwd2").addEventListener("input", checkPwd);	
-</script>
+	
+	document.querySelector("#email").addEventListener("input",function(){
+		let email=this.value;
+		let reg=/@/;
+		isEmailValid=reg.test(email);
+		this.classList.remove("is-valid");
+		this.classList.remove("is-invalid");
+		
+		if(isEmailValid){
+			this.classList.add("is-valid");
+		}else{
+			this.classList.add("is-invalid");
+		}
+	});
+	
+	document.querySelector("#btn").addEventListener("click", function(e){ 
+		//[]- 속성, "[type=submit]"
+		let isValid=isIdValid && isPwdValid & isEmailValid;
+		
+		if(!isValid){
+			e.preventDefault();	
+		}
+		
+	});
+	
+	</script>
 </body>
 </html>
